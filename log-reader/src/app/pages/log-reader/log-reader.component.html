@@ -1,1 +1,72 @@
-<p>log-reader works!</p>
+<nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Log Reader</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Open</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Clear</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" id="filter-dropdown-button" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Filter
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="filter-dropdown-button">
+                        <li><a class="dropdown-item" href="#">Info Level</a></li>
+                        <li><a class="dropdown-item" href="#">Debug Level</a></li>
+                        <li><a class="dropdown-item" href="#">Warning Level</a></li>
+                        <li><a class="dropdown-item" href="#">Error Level</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Has Object(s)</a></li>
+                        <li><a class="dropdown-item" href="#">Has String(s)</a></li>
+                        <li><a class="dropdown-item" href="#">Has Number(s)</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Order by Date Ascending</a></li>
+                        <li><a class="dropdown-item" href="#">Order by Date Descending</a></li>
+                        <li><a class="dropdown-item" href="#">Order by Level Ascending</a></li>
+                        <li><a class="dropdown-item" href="#">Order by Level Descending</a></li>
+                        <li><a class="dropdown-item" href="#">Order by Message Ascending</a></li>
+                        <li><a class="dropdown-item" href="#">Order by Message Descending</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="main-content">
+    <table class="table table-striped-columns">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Level</th>
+                <th scope="col">Type</th>
+                <th scope="col">Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let log of logItems">
+                <td>item {{ log.date  | date:'medium'
+                 }}</td>
+                <td>{{ log.level }}</td>
+                <td>{{ log.type }}</td>
+                <td>{{ log.message }}</td>
+        </tbody>
+    </table>
+</div>
