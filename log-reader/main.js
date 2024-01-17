@@ -16,6 +16,8 @@ let win;
  */
 function createWindow() {
     win = new BrowserWindow({ width: 1200, height: 700 });
+    // Open dev tools for debugging
+    win.webContents.openDevTools();
     // Hide the menu bar
     win.setMenu(null);
     // load the dist folder from Angular

@@ -7,10 +7,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Open</a>
+                    <button class="nav-link">Open</button>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Clear</a>
+                    <button class="nav-link" role="button" (click)="this.ClearLogItems()">Clear</button>
                 </li>
                 <li class="nav-item dropdown">
                     <button class="nav-link dropdown-toggle" id="filter-dropdown-button" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,12 +61,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let log of logItems">
-                <td>item {{ log.date  | date:'medium'
-                 }}</td>
-                <td>{{ log.level }}</td>
-                <td>{{ log.type }}</td>
-                <td>{{ log.message }}</td>
+            <tr *ngFor="let logItem of logItems">
+                <td>{{logItem.date | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>{{logItem.level}}</td>
+                <td>{{logItem.type}}</td>
+                <td style="word-wrap: break-word;"><code>{{logItem.message}}</code></td>
         </tbody>
     </table>
+</div>
+
+<div appearance="fill">
+    <label>Log file</label>
+    <!-- <input matInput id='selectedFile' type='text' name='selectedFile'> -->
+    <input id='inputFile' type='file' name='inputFile' (change)='OpenFileFromInput()'>
 </div>
